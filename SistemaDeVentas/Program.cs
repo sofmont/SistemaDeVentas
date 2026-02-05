@@ -15,10 +15,10 @@ namespace SistemaDeVentas
             int idOrden = 1;
 
             // Inventario inicial
-            sistema.inventario.AgregarProducto(new Producto(1, "Laptop HP", "Laptop", 15000, 5));
-            sistema.inventario.AgregarProducto(new Producto(2, "Mouse Logitech", "Mouse", 300, 10));
-            sistema.inventario.AgregarProducto(new Producto(3, "Teclado Redragon", "Teclado", 800, 6));
-            sistema.inventario.AgregarProducto(new Producto(4, "RAM 8GB Kingston", "RAM", 900, 8));
+            sistema.inventario.AgregarProducto(new Producto(1,  "Laptop", 15000, 5));
+            sistema.inventario.AgregarProducto(new Producto(2,  "Mouse", 300, 10));
+            sistema.inventario.AgregarProducto(new Producto(3,  "Teclado", 800, 6));
+            sistema.inventario.AgregarProducto(new Producto(4,  "RAM", 900, 8));
 
             do
             {
@@ -26,10 +26,11 @@ namespace SistemaDeVentas
                 Console.WriteLine("=== SISTEMA DE VENTAS ===");
                 Console.WriteLine("1. Mostrar inventario");
                 Console.WriteLine("2. Crear orden de venta");
-                Console.WriteLine("3. Salir");
+                Console.WriteLine("3. Modificar Inventario");
+                Console.WriteLine("4. Salir");
                 Console.Write("Seleccione una opción: ");
 
-                opcion = int.Parse(Console.ReadLine());
+                if (int.TryParse(Console.ReadLine(),out opcion))
 
                 switch (opcion)
                 {
@@ -90,7 +91,11 @@ namespace SistemaDeVentas
 
 
                         OrdenVenta orden = new OrdenVenta(idOrden++, cliente, empleado);
-
+                        break;
+                    case 3: Console.WriteLine("MODIFICAR INVENTARIO");
+                        sistema.inventario.ModificarProducto();
+                        Console.ReadKey();
+                        break;
                         string seguir;
                         do
                         {
