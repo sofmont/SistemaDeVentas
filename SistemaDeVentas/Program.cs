@@ -22,11 +22,12 @@ namespace SistemaDeVentas
 
             do
             {
-                Console.WriteLine("--- SISTEMA DE VENTAS CON ORDENES ---");
-                Console.WriteLine("1. Ver inventario");
+                Console.Clear();
+                Console.WriteLine("=== SISTEMA DE VENTAS ===");
+                Console.WriteLine("1. Mostrar inventario");
                 Console.WriteLine("2. Crear orden de venta");
-                Console.WriteLine("3. Ver ingresos totales");
-                Console.WriteLine("0. Salir");
+                Console.WriteLine("3. Salir");
+                Console.Write("Seleccione una opción: ");
 
                 opcion = int.Parse(Console.ReadLine());
 
@@ -34,18 +35,63 @@ namespace SistemaDeVentas
                 {
                     case 1:
                         sistema.inventario.MostrarInventario();
+                        Console.ReadKey();
                         break;
 
                     case 2:
-                        Console.Write("Nombre del cliente: ");
-                        Cliente cliente = new Cliente(Console.ReadLine());
 
-                        Console.Write("Nombre del empleado: ");
-                        Empleado empleado = new Empleado(Console.ReadLine());
+                        Console.WriteLine("=== DATOS DEL CLIENTE ===");
+
+                        Console.Write("ID: ");
+                        int idCliente = int.Parse(Console.ReadLine());
+
+                        Console.Write("Nombre: ");
+                        string nombreCliente = Console.ReadLine();
+
+                        Console.Write("Teléfono: ");
+                        string telCliente = Console.ReadLine();
+
+                        Console.Write("Correo: ");
+                        string correoCliente = Console.ReadLine();
+
+                        Console.Write("Dirección: ");
+                        string dirCliente = Console.ReadLine();
+
+                        Console.Write("Ciudad: ");
+                        string ciudadCliente = Console.ReadLine();
+
+                        Cliente cliente = new Cliente( nombreCliente, telCliente, correoCliente, dirCliente, ciudadCliente);
+
+
+                        Console.WriteLine("\n=== DATOS DEL EMPLEADO ===");
+
+                        Console.Write("ID: ");
+                        int idEmpleado = int.Parse(Console.ReadLine());
+
+                        Console.Write("Nombre: ");
+                        string nombreEmpleado = Console.ReadLine();
+
+                        Console.Write("Teléfono: ");
+                        string telEmpleado = Console.ReadLine();
+
+                        Console.Write("Correo: ");
+                        string correoEmpleado = Console.ReadLine();
+
+                        Console.Write("Dirección: ");
+                        string dirEmpleado = Console.ReadLine();
+
+                        Console.Write("Ciudad: ");
+                        string ciudadEmpleado = Console.ReadLine();
+
+                        Console.Write("Puesto: ");
+                        string puesto = Console.ReadLine();
+
+                        Empleado empleado = new Empleado( nombreEmpleado, telEmpleado, correoEmpleado, dirEmpleado, ciudadEmpleado, puesto);
+
 
                         OrdenVenta orden = new OrdenVenta(idOrden++, cliente, empleado);
-                        string seguir;
 
+                        string seguir;
                         do
                         {
                             sistema.inventario.MostrarInventario();
@@ -57,23 +103,20 @@ namespace SistemaDeVentas
                             if (p != null)
                                 orden.AgregarProducto(p);
                             else
-                                Console.WriteLine("Producto no encontrado.");
+                                Console.WriteLine("Producto no encontrado");
 
-                            Console.Write("¿Agregar otro producto? para seguir seleccionando productos pulsa la letra s: ");
+                            Console.Write("¿Agregar otro producto? (Tecla s para agregar otro producto): ");
                             seguir = Console.ReadLine();
 
-                        } while (seguir == "s");
+                        } while (seguir.ToLower() == "s");
 
                         orden.MostrarOrden();
-                        sistema.RegistrarOrden(orden);
+                        Console.ReadKey();
                         break;
 
-                    case 3:
-                        Console.WriteLine("Ingresos totales: $" + sistema.CalcularIngresos());
-                        break;
                 }
 
-            } while (opcion != 0);
+            } while (opcion != 3);
         }
     }
 }

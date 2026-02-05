@@ -10,8 +10,8 @@ namespace SistemaDeVentas
     {
         public string Puesto { get; set; }
 
-        public Empleado(int id, string nombre, string telefono, string correo, string direccion, string ciudad, string puesto)
-            : base(id, nombre, telefono, correo, direccion, ciudad)
+        public Empleado(string nombre, string telefono, string correo, string direccion, string ciudad, string puesto)
+            : base(nombre, telefono, correo, direccion, ciudad)
         {
             Puesto = puesto;
         }

@@ -8,8 +8,8 @@ namespace SistemaDeVentas
 {
     public class Cliente: Persona 
     {
-        public Cliente(int id, string nombre, string telefono, string correo, string direccion, string ciudad)
-        : base(id, nombre, telefono, correo, direccion, ciudad)
+        public Cliente( string nombre, string telefono, string correo, string direccion, string ciudad)
+        : base( nombre, telefono, correo, direccion, ciudad)
         {
         }
 
