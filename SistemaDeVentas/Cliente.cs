@@ -6,13 +6,19 @@ using System.Threading.Tasks;
 
 namespace SistemaDeVentas
 {
-    public class Cliente
+    public class Cliente: Persona 
     {
-        public string Nombre { get; set; }
-
-        public Cliente(string nombre)
+        public Cliente(int id, string nombre, string telefono, string correo, string direccion, string ciudad)
+        : base(id, nombre, telefono, correo, direccion, ciudad)
         {
-            Nombre = nombre;
+        }
+
+        public override void MostrarInformacion()
+        {
+            Console.WriteLine($"CLIENTE: {Nombre}");
+            Console.WriteLine($"Teléfono: {Telefono}");
+            Console.WriteLine($"Correo: {Correo}");
+            Console.WriteLine($"Dirección: {Direccion}, {Ciudad}");
         }
     }
 }

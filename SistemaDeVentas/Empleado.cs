@@ -6,13 +6,23 @@ using System.Threading.Tasks;
 
 namespace SistemaDeVentas
 {
-    public class Empleado
+    public class Empleado: Persona
     {
-        public string Nombre { get; set; }
+        public string Puesto { get; set; }
 
-        public Empleado(string nombre)
+        public Empleado(int id, string nombre, string telefono, string correo, string direccion, string ciudad, string puesto)
+            : base(id, nombre, telefono, correo, direccion, ciudad)
         {
-            Nombre = nombre;
+            Puesto = puesto;
+        }
+
+        public override void MostrarInformacion()
+        {
+            Console.WriteLine($"EMPLEADO: {Nombre}");
+            Console.WriteLine($"Puesto: {Puesto}");
+            Console.WriteLine($"Teléfono: {Telefono}");
+            Console.WriteLine($"Correo: {Correo}");
+
         }
     }
 }
